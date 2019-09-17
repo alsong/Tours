@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.scss';
+import Navbar from './components/navbar';
 
 function App() {
   return (
-    <h1>Hello from App</h1>
+    <Navbar/>
   );
 }
 
