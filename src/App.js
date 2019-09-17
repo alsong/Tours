@@ -1,10 +1,14 @@
 import React from 'react';
 import './App.scss';
 import Navbar from './components/navbar';
+import TourList from './components/tourlist';
 
 function App() {
   return (
-    <Navbar/>
+    <main>
+      <Navbar/>
+      <TourList/>
+    </main>  
   );
 }
 
