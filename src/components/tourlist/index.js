@@ -20,7 +20,7 @@ export default class TourList extends Component{
         const {tours} = this.state;
 
         return(
-            <section className="tourlist">
+            <section className="tourlist" data-test="secComponent">
               {tours.map(tour => {
                   return (
                       <Tour key={tour.id} tour={tour} removeTour={this.removeTour}/>
