@@ -21,7 +21,9 @@ describe('Tour Component', () => {
                     name: 'Test name',
                     info: 'Test Info'
                 },
-                removeTour: Function
+                removeTour: () => {
+
+                }
             }
          
             const propsErr = checkProps(Tour,expectedProps);
@@ -31,8 +33,10 @@ describe('Tour Component', () => {
     
     describe(' Have props', () =>{
 
-        let wrapper; 
+        let wrapper;
+        let mockFunc; 
         beforeEach(() =>{
+            mockFunc = jest.fn();
             const props ={
                 tour:{
                     id : 1,
@@ -41,7 +45,7 @@ describe('Tour Component', () => {
                     name: 'Test name',
                     info: 'Test Info'
                 },
-                removeTour: Function
+                removeTour: mockFunc
             }
             wrapper = setUp(props);
         })
@@ -79,6 +83,13 @@ describe('Tour Component', () => {
         it('Should render span', () =>{
             const component = findByTestAttr(wrapper,'infoBtnComponent');
             expect(component.length).toBe(1);
+        })
+
+        it('Should emit callback on click event', ()=>{
+            const button = findByTestAttr(wrapper,'closeBtnComponent');
+            button.simulate('click');
+            const callback = mockFunc.mock.calls.length;
+            expect(callback).toBe(1);
         })
 
     })
