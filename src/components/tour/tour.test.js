@@ -92,6 +92,13 @@ describe('Tour Component', () => {
             expect(callback).toBe(1);
         })
 
+        it('handleInfo Method  should update state as expected', () =>{
+            const classInstance = wrapper.instance();
+            classInstance.handleInfo();
+            const newState = classInstance.state.showInfo;
+            expect(newState).toBe(true);
+        })
+
     })
 
     
