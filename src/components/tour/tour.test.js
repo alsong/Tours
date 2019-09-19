@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Tour from './index';
-import { findByTestAttr } from './../../../utils';
+import { findByTestAttr, checkProps } from './../../../utils';
 
 const setUp = (props={}) =>{
     const component = shallow(<Tour {...props}/>);
@@ -9,6 +9,25 @@ const setUp = (props={}) =>{
 }
 
 describe('Tour Component', () => {
+
+    describe('Checking PropTypes', () =>{
+        it('Should not throw a warning', () =>{
+
+            const expectedProps = {
+                tour:{
+                    id : 1,
+                    city: 'Test City ',
+                    img: 'Test img',
+                    name: 'Test name',
+                    info: 'Test Info'
+                },
+                removeTour: Function
+            }
+         
+            const propsErr = checkProps(Tour,expectedProps);
+            expect(propsErr).toBeUndefined();
+        })
+    })
     
     describe(' Have props', () =>{
 
@@ -21,7 +40,8 @@ describe('Tour Component', () => {
                     img: 'Test img',
                     name: 'Test name',
                     info: 'Test Info'
-                }
+                },
+                removeTour: Function
             }
             wrapper = setUp(props);
         })
